@@ -1,5 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 const PATH_SOURCE = path.join(__dirname, './src');
@@ -15,7 +16,7 @@ module.exports = env => {
     return {
         mode: environment,
         resolve: {
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx', '.scss']
         },
         devServer: {
             host: 'localhost',
@@ -50,6 +51,39 @@ module.exports = env => {
                             ]
                         }
                     }
+                },
+                {
+                    test: /\.module\.s(a|c)ss$/,
+                    loader: [
+                        isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                sourceMap: isDevelopment
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: isDevelopment
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.s(a|c)ss$/,
+                    exclude: /\.module.(s(a|c)ss)$/,
+                    loader: [
+                        isDevelopment ? 'style-loader': MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: isDevelopment
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -57,7 +91,11 @@ module.exports = env => {
             new HtmlWebpackPlugin({
                 template: path.join(PATH_SOURCE, './index.html')
             }),
-            new CleanWebpackPlugin()
+            new CleanWebpackPlugin(),
+            new MiniCssExtractPlugin({
+                filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+                chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+            })
         ]
     }
 }
