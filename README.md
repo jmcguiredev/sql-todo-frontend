@@ -1,6 +1,6 @@
 # react-boilerplate
 
-A React Boilerplate with Webpack and Babel.
+A React Boilerplate with Webpack Babel, CoreJS, and Sass.
 
 ## Development Build
 
