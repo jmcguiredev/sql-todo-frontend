@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import ReactLogo from './assets/reactlogo.svg';
 
 
-class App extends Component {
-    render() {
-        return (
-            <div id="app">
-                <h1>Welcome</h1>
-                <h4>This is a React Application</h4>
+const App = ({}) => {
+    return (
+        <div id="app">
+            <div className="intro-container">
+                <h1 className="intro intro-heading">Welcome to your React Electron App</h1>
+                <img className="app-icon" src={ReactLogo}/>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default App;
