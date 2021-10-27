@@ -1,29 +1,31 @@
-@mixin centerEl {
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.todo-container {
+    width: 80vw;
+    height: 80vh;
+    border: 1px solid black;
+    margin-top: 3rem;
+}
+
+.todo-header {
+    height: 3rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-cell {
+    border-right: 1px solid black;
+    width: 100%;
+    font-size: 1.5rem;
+    display: flex;
     justify-content: center;
     align-items: center;
-
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-body, #root, #app, .intro-container {
-    @include centerEl;
-    text-align: center;
-}
-
-.app-icon {
-    height: 50vh;
-    width: 50vh;
-    animation: 8s infinite rotate;
-    animation-timing-function: linear;
-}
-
-.intro {
-    font-family: Arial, Helvetica, sans-serif;
 }

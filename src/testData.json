@@ -1,0 +1,28 @@
+{
+    "todos": [
+        {
+            "id": 1,
+            "label": "Clean Fridge",
+            "note": "Make sure to empty out the milk before trash",
+            "completed": 0
+        },
+        {
+            "id": 2,
+            "label": "Clean Floors",
+            "note": "Vacuum and then wash",
+            "completed": 0
+        },
+        {
+            "id": 3,
+            "label": "Do Laundry",
+            "note": "Buy quarters",
+            "completed": 1
+        },
+        {
+            "id": 4,
+            "label": "Move AC",
+            "note": "Drain it",
+            "completed": 0
+        }
+    ]
+}
