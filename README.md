@@ -1,6 +1,6 @@
 # react-boilerplate
 
-A React Boilerplate with Webpack Babel, CoreJS, and Sass.
+Front end for my SQL Todo list.
 
 ## Development Build
 
