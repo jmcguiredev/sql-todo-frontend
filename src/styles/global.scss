@@ -14,18 +14,26 @@
     margin-top: 3rem;
 }
 
-.todo-header {
+.todo-row {
     height: 3rem;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
 }
 
+.todo-row:nth-child(even) {
+    background-color: lightgray;
+}
+
 .todo-cell {
-    border-right: 1px solid black;
+    
     width: 100%;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.todo-cell + .todo-cell {
+    border-left: 1px solid black;
 }
