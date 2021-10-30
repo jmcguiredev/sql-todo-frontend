@@ -1,0 +1,19 @@
+.circle-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 10rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: rgb(52, 52, 223);
+    
+    &:hover {
+        background-color: rgb(97, 97, 218);
+    }
+}
+
+.circle-checkbox-checkmark {
+    filter: invert(98%) sepia(2%) saturate(691%) hue-rotate(318deg) brightness(120%) contrast(100%);
+    transform: scale(0.75);
+}
