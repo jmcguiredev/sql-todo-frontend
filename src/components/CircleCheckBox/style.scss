@@ -2,14 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(212, 212, 212);
+
     border-radius: 10rem;
     width: 1.5rem;
     height: 1.5rem;
+}
+
+.checked {
     background-color: rgb(52, 52, 223);
-    
     &:hover {
         background-color: rgb(97, 97, 218);
+    }
+}
+
+.unchecked {
+    border: 1px solid rgb(212, 212, 212);
+    background-color: rgb(255, 255, 255);
+    &:hover {
+        background-color: rgb(170, 210, 255);
     }
 }
 

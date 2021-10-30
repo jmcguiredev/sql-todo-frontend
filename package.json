@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@patternfly/patternfly": "^4.151.4",
+    "@patternfly/react-core": "^4.168.8",
     "axios": "^0.24.0",
     "core-js": "^3.16.4",
     "file-loader": "^6.2.0",

@@ -6,6 +6,9 @@ export async function getTodos(setTodos) {
     axios.get('http://localhost:3000/todos').then(res => {
         console.log(res);
         todoArr = [...res.data];
+        todoArr.forEach((todo) => {
+            todo.modified = false;
+        })
         setTodos(todoArr);
     });
 

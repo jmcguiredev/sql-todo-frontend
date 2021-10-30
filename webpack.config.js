@@ -16,7 +16,7 @@ module.exports = env => {
     return {
         mode: environment,
         resolve: {
-            extensions: ['.js', '.jsx', '.scss']
+            extensions: ['.js', '.jsx', '.scss', '.css']
         },
         devServer: {
             host: 'localhost',
@@ -55,14 +55,18 @@ module.exports = env => {
                 {
                     test: /\.(png|jp(e*)g|svg|gif)$/,
                     use: [
-                      {
-                        loader: 'file-loader',
-                        options: {
-                          name: 'images/[hash]-[name].[ext]',
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: 'images/[hash]-[name].[ext]',
+                            },
                         },
-                      },
                     ],
-                  },
+                },
+                {
+                    test: /\.css$/,
+                    loader: ['css-loader']
+                },
                 {
                     test: /\.module\.s(a|c)ss$/,
                     loader: [
@@ -86,7 +90,7 @@ module.exports = env => {
                     test: /\.s(a|c)ss$/,
                     exclude: /\.module.(s(a|c)ss)$/,
                     loader: [
-                        isDevelopment ? 'style-loader': MiniCssExtractPlugin.loader,
+                        isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
                         {
                             loader: 'sass-loader',
@@ -95,7 +99,7 @@ module.exports = env => {
                             }
                         }
                     ]
-                }
+                },
             ]
         },
         plugins: [
