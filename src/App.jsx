@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TodoList from './components/TodoList/TodoList';
-import { getTodos } from './util/getTodos';
+import { getTodos, setTodo } from './util/todos';
 
 const App = ({ }) => {
 
@@ -12,11 +12,17 @@ const App = ({ }) => {
         let index = todos.indexOf(todos.find((todo) => todoId === todo._id));
         let newTodos = [...todos];
         newTodos[index].completed = !newTodos[index].completed;
+        newTodos[index].modified = true;
         setTodos(newTodos);
     }
 
     function handleSave() {
 
+        todos.forEach((todo) => {
+            if(todo.modified) {
+                setTodo(todo);
+            }
+        });
     }
 
     useEffect(() => {

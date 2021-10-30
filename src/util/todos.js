@@ -13,3 +13,7 @@ export async function getTodos(setTodos) {
     });
 
 }
+
+export async function setTodo(todo) {
+    axios.put('http://localhost:3000/todo', todo);
+}
