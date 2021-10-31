@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import './style';
 
 
-const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved }) => {
+const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved, handleEdit}) => {
 
     function truncate(text, length) {
         return (text.slice(0, length) + (length < text.length ? '...' : ''));
@@ -21,6 +21,7 @@ const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved }
                     <span className="todo-cell todo-header-label">Label</span>
                     <span className="todo-cell todo-header-note">Note</span>
                     <span className="todo-cell todo-header-completed">Complete</span>
+                    <span className="todo-cell todo-header-edit">Edit</span>
                 </div>
                 {todos ? todos.map((todo) => (
                     <div className="todo-row" key={todo._id}>
@@ -32,6 +33,14 @@ const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved }
                                 checked={todo.completed}
                                 handleClick={handleCheckBoxClick}
                                 todoId={todo._id} />
+                        </span>
+                        <span className="todo-cell todo-entry todo-entry-edit">
+                            <Button 
+                            text="Edit"
+                            btnClass="button-primary"
+                            onClick={handleEdit}
+                            enabled={true} 
+                            todoId={todo._id}/>
                         </span>
                     </div>
                 )) : null}

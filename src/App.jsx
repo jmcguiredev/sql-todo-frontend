@@ -29,6 +29,10 @@ const App = ({ }) => {
         });
     }
 
+    function editTodo(todoId) {
+        
+    }
+
     useEffect(() => {
         getTodos(setTodos);
     }, []); // the second argument [] makes this only run on mount and not re-renders
@@ -40,7 +44,8 @@ const App = ({ }) => {
             handleCheckBoxClick={handleCheckBoxClick} 
             saveEnabled={todosModified}
             handleSave={handleSave} 
-            saved={saved}/>
+            saved={saved}
+            handleEdit={editTodo}/>
         </div>
     );
 }
