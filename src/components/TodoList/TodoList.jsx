@@ -1,10 +1,11 @@
 import React from 'react';
+import Modal, { closeStyle } from 'simple-react-modal';
 import CircleCheckBox from '../CircleCheckBox/CircleCheckBox';
 import Button from '../Button/Button';
 import './style';
 
 
-const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved, handleEdit}) => {
+const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved, toggleModal, modalOpen }) => {
 
     function truncate(text, length) {
         return (text.slice(0, length) + (length < text.length ? '...' : ''));
@@ -35,24 +36,37 @@ const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved, 
                                 todoId={todo._id} />
                         </span>
                         <span className="todo-cell todo-entry todo-entry-edit">
-                            <Button 
-                            text="Edit"
-                            btnClass="button-primary"
-                            onClick={handleEdit}
-                            enabled={true} 
-                            todoId={todo._id}/>
+                            <Button
+                                text="Edit"
+                                btnClass="button-primary"
+                                onClick={toggleModal}
+                                enabled={true}
+                                todoId={todo._id} />
                         </span>
                     </div>
                 )) : null}
             </div>
             <div className="todo-controls">
-            <span className="save-message" style={{ opacity: saved ? 1 : 0}}>Changes Saved Successfully.</span>
+                <span className="save-message" style={{ opacity: saved ? 1 : 0 }}>Changes Saved Successfully.</span>
                 <Button
                     text="Save"
                     btnClass="button-primary"
                     onClick={handleSave}
                     enabled={saveEnabled} />
             </div>
+            <Modal show={modalOpen} containerStyle={{ height: "80vh", width: "80vw" }}>
+                <div className="modal-container">
+                    <div className="modal-top-bar">
+                        <span className="modal-close" onClick={toggleModal}>X</span>
+                    </div>
+                    <div className="modal-content">
+                        {/* Inputs */}
+                    </div>
+                    <div className="modal-bottom-bar">
+                        {/* Save Button */}
+                    </div>
+                </div>
+            </Modal>
         </div>
 
     );

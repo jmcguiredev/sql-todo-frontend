@@ -7,6 +7,8 @@ const App = ({ }) => {
     const [todos, setTodos] = useState();
     const [todosModified, setTodosModified] = useState(false);
     const [saved, setSaved] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedTodo, setSelectedTodo] = useState(false);
 
     function handleCheckBoxClick(todoId) {
         setSaved(false);
@@ -29,8 +31,10 @@ const App = ({ }) => {
         });
     }
 
-    function editTodo(todoId) {
-        
+    function toggleModal(todoId) {
+
+        setSelectedTodo(todoId);
+        setModalOpen(!modalOpen);
     }
 
     useEffect(() => {
@@ -45,7 +49,8 @@ const App = ({ }) => {
             saveEnabled={todosModified}
             handleSave={handleSave} 
             saved={saved}
-            handleEdit={editTodo}/>
+            toggleModal={toggleModal}
+            modalOpen={modalOpen}/>
         </div>
     );
 }
