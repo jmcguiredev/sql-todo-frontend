@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import './style';
 
 
-const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave }) => {
+const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave, saved }) => {
 
     function truncate(text, length) {
         return (text.slice(0, length) + (length < text.length ? '...' : ''));
@@ -29,19 +29,20 @@ const TodoList = ({ todos, handleCheckBoxClick, saveEnabled, handleSave }) => {
                         <span className="todo-cell todo-entry todo-entry-note">{truncate(todo.note, noteLength)}</span>
                         <span className="todo-cell todo-entry todo-entry-completed">
                             <CircleCheckBox
-                                checked={todo.completed} 
-                                handleClick={handleCheckBoxClick} 
+                                checked={todo.completed}
+                                handleClick={handleCheckBoxClick}
                                 todoId={todo._id} />
                         </span>
                     </div>
                 )) : null}
             </div>
             <div className="todo-controls">
-                <Button 
-                text="Save" 
-                btnClass="button-primary" 
-                onClick={handleSave}
-                enabled={saveEnabled}/>
+            <span className="save-message" style={{ opacity: saved ? 1 : 0}}>Changes Saved Successfully.</span>
+                <Button
+                    text="Save"
+                    btnClass="button-primary"
+                    onClick={handleSave}
+                    enabled={saveEnabled} />
             </div>
         </div>
 

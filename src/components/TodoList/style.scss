@@ -32,6 +32,7 @@
     justify-content: flex-end;
     width: 100%;
     padding: 0.25rem 0.25rem;
+    align-items: center;
 }
 
 .todo-row {
@@ -61,3 +62,11 @@
 .todo-cell + .todo-cell {
     border-left: 1px solid var(--todolist-border-color);
 }
+
+.save-message {
+    color: green;
+    padding-right: 1rem;
+    opacity: 0;
+    transition: 0.1s;
+}
+

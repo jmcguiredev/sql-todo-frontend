@@ -6,8 +6,10 @@ const App = ({ }) => {
 
     const [todos, setTodos] = useState();
     const [todosModified, setTodosModified] = useState(false);
+    const [saved, setSaved] = useState(false);
 
     function handleCheckBoxClick(todoId) {
+        setSaved(false);
         setTodosModified(true);
         let index = todos.indexOf(todos.find((todo) => todoId === todo._id));
         let newTodos = [...todos];
@@ -18,6 +20,8 @@ const App = ({ }) => {
 
     function handleSave() {
 
+        setSaved(true);
+        setTodosModified(false);
         todos.forEach((todo) => {
             if(todo.modified) {
                 setTodo(todo);
@@ -35,7 +39,8 @@ const App = ({ }) => {
             todos={todos} 
             handleCheckBoxClick={handleCheckBoxClick} 
             saveEnabled={todosModified}
-            handleSave={handleSave} />
+            handleSave={handleSave} 
+            saved={saved}/>
         </div>
     );
 }
